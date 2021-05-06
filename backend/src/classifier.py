@@ -2,9 +2,8 @@ from keras.constraints import maxnorm
 from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Activation
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.models import Sequential
-from tensorflow import keras
 
-from src.image import INPUT_SHAPE
+from image import INPUT_SHAPE
 
 RELU = 'relu'
 SOFTMAX = 'softmax'
@@ -75,7 +74,8 @@ class Classifier:
 
     @staticmethod
     def load_model(directory):
-        return keras.models.load_model(directory)
+        # return keras.models.load_model(directory)
+        ...
 
     def predict(self, image):
         ...

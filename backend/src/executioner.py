@@ -1,6 +1,6 @@
 import os
 
-from src import template
+import template
 
 
 class Executioner:

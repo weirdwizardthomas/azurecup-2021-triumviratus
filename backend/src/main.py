@@ -1,6 +1,8 @@
 import os
 
-from src import arguments, responder, watcher
+import arguments
+import responder
+import watcher
 
 INPUT_FOLDER = 'input'
 OUTPUT_FOLDER = 'output'

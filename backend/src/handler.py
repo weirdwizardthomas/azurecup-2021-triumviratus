@@ -4,11 +4,11 @@ import time
 from PIL import UnidentifiedImageError
 from watchdog.events import FileSystemEventHandler
 
-from src import template
-from src.classifier import Classifier
-from src.executioner import Executioner
-from src.image import load_image
-from src.responder import Responder
+import template
+from classifier import Classifier
+from executioner import Executioner
+from image import load_image
+from responder import Responder
 
 
 def _wait_for_copying(event):

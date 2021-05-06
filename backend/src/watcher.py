@@ -2,8 +2,8 @@ import time
 
 from watchdog.observers import Observer
 
-from src import template
-from src.handler import Handler
+import template
+from handler import Handler
 
 TIMEOUT = 5
 
