@@ -8,10 +8,9 @@ class Responder:
     directory = None
 
     def save(self, data):
-        filename = os.path.join(self.directory, template.JSON_WITH_EXTENSION.format(data['name']))
-        # todo remove the original extension - otherwise its .jpg/png/whatever.json?
-        # todo when to remove the file - on this side or server side?
-        print(template.WRITING_DATA_TO.format(filename))
+        filename_no_extension = os.path.splitext(data['name'])[0]
+        path = os.path.join(self.directory, template.JSON_WITH_EXTENSION.format(filename_no_extension))
+        print(template.WRITING_DATA_TO.format(path))
 
-        with open(filename, 'w+') as output:
+        with open(path, 'w+') as output:
             json.dump(data, output)
