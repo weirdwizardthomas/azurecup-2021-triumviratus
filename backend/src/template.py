@@ -4,3 +4,4 @@ RECEIVED_CREATED_EVENT = "Received created event: {}."
 OBSERVING_DIRECTORY = 'Observing {}'
 JSON_WITH_EXTENSION = '{}.json'
 WRITING_DATA_TO = 'Writing data to {}'
+FILE_DELETED = 'File deleted: {}'
