@@ -4,7 +4,7 @@ import os
 import template
 
 
-class Responder:
+class Publisher:
     directory = None
 
     def save(self, data):

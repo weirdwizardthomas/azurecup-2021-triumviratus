@@ -11,10 +11,9 @@ TIMEOUT = 5
 class Watcher:
     directory = None
 
-    def __init__(self, model_path):
+    def __init__(self, model_path, classes):
         self.observer = Observer()
-        self.model_path = model_path
-        self.event_handler = Handler(self.model_path)
+        self.event_handler = Handler(model_path, classes)
 
     def run(self):
         print(template.OBSERVING_DIRECTORY.format(self.directory))

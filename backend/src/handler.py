@@ -8,7 +8,7 @@ import template
 from classifier import Classifier
 from executioner import Executioner
 from image import load_image
-from responder import Responder
+from publisher import Publisher
 
 
 def _wait_for_copying(event):
@@ -32,10 +32,10 @@ def _wait_for_copying(event):
 
 
 class Handler(FileSystemEventHandler):
-    def __init__(self, model_directory):
-        self.responder = Responder()
+    def __init__(self, model_directory, classes):
+        self.responder = Publisher()
         self.executioner = Executioner()
-        self.classifier = Classifier.get_instance(create_new=False, directory=model_directory)
+        self.classifier = Classifier.get_instance(model_directory=model_directory, classes=classes)
 
     def on_deleted(self, event):
         print(template.FILE_DELETED.format(event.src_path))
@@ -56,7 +56,8 @@ class Handler(FileSystemEventHandler):
         finally:
             self.executioner.remove(event.src_path)
 
-        predictions = []  # ...  # classifier.Classifier.predict(image)
+        predictions = {key: str(value) for key, value in self.classifier.predict(image).items()}
+
         data = {
             'name': os.path.basename(event.src_path),
             'predictions': predictions

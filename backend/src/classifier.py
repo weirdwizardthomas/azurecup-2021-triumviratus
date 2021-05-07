@@ -1,7 +1,5 @@
-from keras.constraints import maxnorm
-from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Activation
-from keras.layers.convolutional import Conv2D, MaxPooling2D
-from keras.models import Sequential
+import numpy as np
+from tensorflow import keras
 
 from image import INPUT_SHAPE
 
@@ -21,61 +19,20 @@ class Classifier:
     __instance = None
 
     @staticmethod
-    def get_instance(create_new=True, directory=None, input_shape=INPUT_SHAPE, class_count=CLASS_COUNT):
+    def get_instance(model_directory, classes):
         if Classifier.__instance is None:
-            Classifier.__instance = Classifier(input_shape) if create_new else Classifier.load_model(directory)
+            Classifier.__instance = Classifier(model_directory, classes)
         return Classifier.__instance
 
-    def __init__(self, input_shape=(256, 256, 1), optimizer=OPTIMIZER, loss=LOSS, class_count=CLASS_COUNT):
-        self.model = Sequential()
-
-        self.model.add(Conv2D(32, STRIDE, input_shape=input_shape, padding=PADDING))
-        self.model.add(Activation(RELU))
-        self.model.add(Dropout(DROPOUT))
-        self.model.add(BatchNormalization())
-
-        self.model.add(Conv2D(64, STRIDE, padding=PADDING))
-        self.model.add(Activation(RELU))
-        self.model.add(MaxPooling2D(pool_size=POOL_SIZE))
-        self.model.add(Dropout(DROPOUT))
-        self.model.add(BatchNormalization())
-
-        self.model.add(Conv2D(64, STRIDE, padding=PADDING))
-        self.model.add(Activation(RELU))
-        self.model.add(MaxPooling2D(pool_size=POOL_SIZE))
-        self.model.add(Dropout(DROPOUT))
-        self.model.add(BatchNormalization())
-
-        self.model.add(Conv2D(128, STRIDE, padding=PADDING))
-        self.model.add(Activation(RELU))
-        self.model.add(Dropout(DROPOUT))
-        self.model.add(BatchNormalization())
-
-        self.model.add(Flatten())
-        self.model.add(Dropout(DROPOUT))
-
-        self.model.add(Dense(256, kernel_constraint=maxnorm(3)))
-        self.model.add(Activation(RELU))
-        self.model.add(Dropout(DROPOUT))
-        self.model.add(BatchNormalization())
-
-        self.model.add(Dense(128, kernel_constraint=maxnorm(3)))
-        self.model.add(Activation(RELU))
-        self.model.add(Dropout(DROPOUT))
-        self.model.add(BatchNormalization())
-
-        self.model.add(Dense(class_count))
-        self.model.add(Activation(SOFTMAX))
-
-        self.model.compile(loss=loss, optimizer=optimizer, metrics=METRICS)
+    def __init__(self, model_directory, classes):
+        self.model = keras.models.load_model(model_directory)
+        self.classes = classes
 
     def save_model(self, directory):
         self.model.save(directory)
 
-    @staticmethod
-    def load_model(directory):
-        # return keras.models.load_model(directory)
-        ...
-
     def predict(self, image):
-        ...
+        array = np.array(image).reshape(INPUT_SHAPE)
+        batch = np.expand_dims(array, axis=0)
+        predictions = self.model.predict(batch)[0]
+        return dict(zip(self.classes, predictions))
