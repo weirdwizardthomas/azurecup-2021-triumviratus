@@ -32,15 +32,41 @@ def _wait_for_copying(event):
 
 
 class Handler(FileSystemEventHandler):
+    """
+    Handler of file changes in an observed directory. Currently handling the following events:
+        1. file created
+        2. file deleted.
+
+    Attributes
+    ----------
+    publisher: Publisher
+        Writes the classification results into an output directory as a JSON.
+    executioner: Executioner
+        Deletes input files.
+    classifier: Classifier
+        Classifies input images based on a provided model.
+    """
+
     def __init__(self, model_directory, classes):
-        self.responder = Publisher()
+        self.publisher = Publisher()
         self.executioner = Executioner()
         self.classifier = Classifier.get_instance(model_directory=model_directory, classes=classes)
 
     def on_deleted(self, event):
+        """
+        Triggers whenever a file in the observed directory is deleted and logs it.
+        :param event: Triggering event
+        :return: None
+        """
         print(template.FILE_DELETED.format(event.src_path))
 
     def on_created(self, event):
+        """
+        Triggers whenever a file is created in the observed directory. If the file is an image, it is classified.
+        Whether successful or not, the file is deleted.
+        :param event: Triggering event
+        :return: None
+        """
         _wait_for_copying(event)
 
         print(template.RECEIVED_CREATED_EVENT.format(event.src_path))
@@ -62,4 +88,4 @@ class Handler(FileSystemEventHandler):
             'name': os.path.basename(event.src_path),
             'predictions': predictions
         }
-        self.responder.save(data)
+        self.publisher.save(data)

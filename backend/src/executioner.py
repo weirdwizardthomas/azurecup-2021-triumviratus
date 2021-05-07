@@ -4,7 +4,16 @@ import template
 
 
 class Executioner:
+    """
+    Wrapper around file deleting. Just wanted to be fancy, really.
+    """
+
     def remove(self, file):
+        """
+        Deletes a file, if it exists.
+        :param file: File to delete.
+        :return: None
+        """
         if os.path.exists(file):
             os.remove(file)
         else:

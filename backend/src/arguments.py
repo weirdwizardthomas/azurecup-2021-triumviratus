@@ -6,6 +6,10 @@ TRAIN = '--train'
 
 
 def _setup_parser():
+    """
+    Configures a parser.
+    :return: argparse.ArgumentParser
+    """
     parser = argparse.ArgumentParser(description='Classifier for mushrooms')
     parser.add_argument(TRAIN, dest='mode', action='store_true')
     parser.add_argument(CLASSIFY, dest='mode', action='store_false')
@@ -18,4 +22,8 @@ def _setup_parser():
 
 
 def get_args():
+    """
+    Provides command-line arguments
+    :return: argparse.Namespace. Command-line arguments
+    """
     return _setup_parser().parse_args()
