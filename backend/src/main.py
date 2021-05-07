@@ -1,9 +1,9 @@
 import os
 
 import arguments
+import dataset
 import publisher
 import watcher
-from src import dataset
 
 INPUT_FOLDER = 'input'
 OUTPUT_FOLDER = 'output'
