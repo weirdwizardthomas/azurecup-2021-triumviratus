@@ -42,7 +42,7 @@ class Watcher:
         try:
             while True:
                 time.sleep(TIMEOUT)
-        except:
+        except KeyboardInterrupt:
             self.observer.stop()
             print('Error')
 

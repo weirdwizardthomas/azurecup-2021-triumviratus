@@ -7,8 +7,8 @@ from config import config
 
 class Publisher:
     """
-    A simple writer to publish a classification result to a JSON file.The output file shares the name with the input file,
-    but the file extension is swapped to .json.
+    A simple writer to publish a classification result to a JSON file.
+    The output file shares the name with the input file, but the file extension is swapped to .json.
 
     Attributes
     ----------

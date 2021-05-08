@@ -8,7 +8,8 @@ class Executioner:
     Wrapper around file deleting. Just wanted to be fancy, really.
     """
 
-    def remove(self, file):
+    @staticmethod
+    def remove(file):
         """
         Deletes a file, if it exists.
         :param file: File to delete.
