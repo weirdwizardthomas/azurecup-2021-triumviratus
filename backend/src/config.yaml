@@ -1,0 +1,24 @@
+image:
+  width: 256
+  height: 256
+  channels: 1
+
+classification:
+  classes:
+    - Agaricus
+    - Amanita
+    - Boletus
+    - Cortinarius
+    - Entoloma
+    - Hygrocybe
+    - Lactarius
+    - Russula
+    - Suillus
+  model: ../model/model
+  marketplace: ../data/marketplace
+  timeout: 5
+training:
+  test-data: ../data/image-dataset/mushrooms/test
+  train-data: ../data/image-dataset/mushrooms/train
+  keys:
+    kaggle: ./keychain/kaggle

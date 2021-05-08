@@ -47,10 +47,10 @@ class Handler(FileSystemEventHandler):
         Classifies input images based on a provided model.
     """
 
-    def __init__(self, model_directory, classes):
+    def __init__(self):
         self.publisher = Publisher()
         self.executioner = Executioner()
-        self.classifier = Classifier.get_instance(model_directory=model_directory, classes=classes)
+        self.classifier = Classifier.get_instance()
 
     def on_deleted(self, event):
         """

@@ -1,6 +1,8 @@
 from PIL import Image
 
-WIDTH, HEIGHT, CHANNELS = 256, 256, 1
+import config
+
+WIDTH, HEIGHT, CHANNELS = config.to_tuple(config.config.image)
 INPUT_SHAPE = (WIDTH, HEIGHT, CHANNELS)
 
 

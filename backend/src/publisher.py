@@ -2,11 +2,12 @@ import json
 import os
 
 import template
+from config import config
 
 
 class Publisher:
     """
-    A simple writer to publish a classification result to a JSON file. The output file shares the name with the input file,
+    A simple writer to publish a classification result to a JSON file.The output file shares the name with the input file,
     but the file extension is swapped to .json.
 
     Attributes
@@ -14,7 +15,7 @@ class Publisher:
     directory: str
         Path to the output directory. Static attribute.
     """
-    directory = None
+    directory = os.path.join(config.classification.marketplace, 'output')
 
     def save(self, data):
         """

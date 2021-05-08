@@ -1,11 +1,13 @@
+import os
 import time
 
 from watchdog.observers import Observer
 
 import template
+from config import config
 from handler import Handler
 
-TIMEOUT = 5
+TIMEOUT = config.classification.timeout
 
 
 class Watcher:
@@ -22,15 +24,11 @@ class Watcher:
     event_handler: Handler
         Runs when a file change occurs, namely when a file is created in the observed directory.
     """
-    directory = None
+    directory = os.path.join(config.classification.marketplace, 'input')
 
-    def __init__(self, model_path, classes):
-        """
-        :param model_path: Path to the classifier model.
-        :param classes: List of classes which the classifier distinguishes.
-        """
+    def __init__(self):
         self.observer = Observer()
-        self.event_handler = Handler(model_path, classes)
+        self.event_handler = Handler()
 
     def run(self):
         """

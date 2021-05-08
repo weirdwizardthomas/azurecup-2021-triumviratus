@@ -82,6 +82,10 @@ specific structure requirements, noted below.
 Alternatively you may want to use distributions like [Anaconda](https://www.anaconda.com/) for downloading & dependency
 management.
 
+## Configuration
+
+All configuration is provided by the `config.yaml` file. There is a default configuration provided.
+
 ## Running the classifier
 
 Running the application in the main mode, listening for input data, requires three items:
@@ -112,7 +116,7 @@ The marketplace is the drop point for input images and output results. To run th
 folder for data, provide a path to the classifier model.
 
 ```
-python main.py --classify --model PATH_TO_MODEL --marketplace PATH_TO_MARKETPLACE_ROOT --classes PATH_TO_CLASS_FOLDER
+python main.py
 ```
 
 ### Marketplace
@@ -186,10 +190,10 @@ In order to train a model, the programme needs data to learn from. There are two
                 └── Suillus
 ```
 
-To commence training, add the `--train` flag, as well as provide a path to the `train` and `test` folders.
+To commence training, run:
 
 ```
-python main.py --train --train-data PATH_TO_TRAIN_DATA_FOLDER --test-data PATH_TO_TEST_DATA_FOLDER
+python train.py
 ```
 
 ## Classification results
