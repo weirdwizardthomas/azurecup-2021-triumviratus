@@ -56,7 +56,9 @@ specific structure requirements, noted below.
 ```
 
 # Backend [Classifier]
+The backend project is comprised of a script listening to changes in a specific inventory, feeding images into that directory into a classifier, and providing the classification results in an output directory. The classifier model has to be provided, but there is also a provided by the `train.py` script. Although the backend was developed with classification of mushrooms in mind, it is generic enough to support and run any [Keras](https://keras.io/) out of the box.
 
+Further development is listed at the end of the readme file.
 ## Requirements
 
 * Python 3.x (developed with 3.6.x, 3.7.x and 3.8.x)
