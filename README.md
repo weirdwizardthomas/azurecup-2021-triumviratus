@@ -86,6 +86,34 @@ management.
 
 All configuration is provided by the `config.yaml` file. There is a default configuration provided.
 
+```yaml
+image:
+  width: 256
+  height: 256
+  channels: 1
+
+classification:
+  classes:
+    - Agaricus
+    - Amanita
+    - Boletus
+    - Cortinarius
+    - Entoloma
+    - Hygrocybe
+    - Lactarius
+    - Russula
+    - Suillus
+  model: ../model/model
+  marketplace: ../data/marketplace
+  timeout: 5
+training:
+  test-data: ../data/image-dataset/mushrooms/test
+  train-data: ../data/image-dataset/mushrooms/train
+  keys:
+    kaggle: ./keychain/kaggle
+
+```
+
 ## Running the classifier
 
 Running the application in the main mode, listening for input data, requires three items:
@@ -214,5 +242,5 @@ python train.py
 - [x] Remove the need to include a folder of classes for a classifier (Have a 'hard coded' list stored, or maybe provide
   file with list at runtime? FOLDER WITH CLASS NAMES MAY NOT BE AVAILABLE, ESPECIALLY IF NO TRAINING OCCURS AND MODEL IS
   JUST PROVIDED).
-- [x] Split training and the main loop into separate files.
-- [x] Create a config file for backend.
+- [x] Split the training and the main loop into separate files.
+- [x] Create a config file for the backend.
