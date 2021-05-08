@@ -211,7 +211,8 @@ python train.py
 - [ ] Find new data sources
 - [ ] Tied with the above, find a finer labeled dataset
 - [ ] Develop a phone application
-- [ ] Remove the need to include a folder of classes for a classifier (Have a 'hard coded' list stored, or maybe provide
+- [x] Remove the need to include a folder of classes for a classifier (Have a 'hard coded' list stored, or maybe provide
   file with list at runtime? FOLDER WITH CLASS NAMES MAY NOT BE AVAILABLE, ESPECIALLY IF NO TRAINING OCCURS AND MODEL IS
   JUST PROVIDED).
-- [ ] Split training and the main loop into separate files.
+- [x] Split training and the main loop into separate files.
+- [x] Create a config file for backend.
