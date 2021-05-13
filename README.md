@@ -61,7 +61,7 @@ mind, it is generic enough to support and run any [Keras](https://keras.io/) out
 
 ## Installing dependencies
 
-1. Download & install [Python 3.x](https://www.python.org/downloads/).
+1. Download & install [Python 3.8](https://www.python.org/downloads/).
 1. Download/clone the project.
 1. Navigate to the project's backend folder
     ```
