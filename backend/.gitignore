@@ -211,3 +211,5 @@ fabric.properties
 keychain/*
 !keychain/.gitkeep
 
+model/*
+!model/.gitkeep
