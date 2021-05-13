@@ -21,13 +21,9 @@ specific structure requirements, noted below.
 │       ├── arguments.py
 │       ├── classifier.py
 │       ├── dataset.py
-│       ├── executioner.py
-│       ├── handler.py
+│       ├── file_handler.py
 │       ├── image.py
-│       ├── main.py
-│       ├── publisher.py
-│       ├── template.py
-│       └── watcher.py
+│       └── template.py
 ├── frontend
 │   ├── client.js
 │   ├── package.json
@@ -47,21 +43,20 @@ specific structure requirements, noted below.
 │   │   │       ├── ...
 │   │   │       └── CLASS #N
 │   │   └── DATASET #2
-│   └── marketplace
-│       ├── input
-│       └── output
+│   └── upload
 ├── LICENSE
-├── project-structure.txt
 └── README.md
 ```
 
 # Backend [Classifier]
-The backend project is comprised of a script listening to changes in a specific inventory, feeding images into that directory into a classifier, and providing the classification results in an output directory. The classifier model has to be provided, but there is also a provided by the `train.py` script. Although the backend was developed with classification of mushrooms in mind, it is generic enough to support and run any [Keras](https://keras.io/) out of the box.
 
-Further development is listed at the end of the readme file.
+The backend project consists of a classifier running as a webservice. The classifier model has to be provided, but there
+is also a provided by the `train.py` script. Although the backend was developed with classification of mushrooms in
+mind, it is generic enough to support and run any [Keras](https://keras.io/) out of the box.
+
 ## Requirements
 
-* Python 3.x (developed with 3.6.x, 3.7.x and 3.8.x)
+* Python 3.8.x
 * Python dependencies can be installed using the provided `requirements.txt`
 
 ## Installing dependencies
@@ -93,7 +88,6 @@ image:
   width: 256
   height: 256
   channels: 1
-
 classification:
   classes:
     - Agaricus
@@ -105,69 +99,54 @@ classification:
     - Lactarius
     - Russula
     - Suillus
-  model: ../model/model
-  marketplace: ../data/marketplace
-  timeout: 5
+  model: ../model/2021-05-06_193008_561796_46_percent
+  upload_folder: ../data/upload
 training:
-  test-data: ../data/image-dataset/mushrooms/test
-  train-data: ../data/image-dataset/mushrooms/train
+  test_data: ../data/image-dataset/mushrooms/test
+  train_data: ../data/image-dataset/mushrooms/train
   keys:
     kaggle: ./keychain/kaggle
-
 ```
 
 ## Running the classifier
 
-Running the application in the main mode, listening for input data, requires three items:
+Running the application requires a classifier model (refer to [Training a model](#Training-a-new-model)). The
+application runs on `http://127.0.0.1:5000/` by default.
 
-1. an input folder
-1. an output folder
-1. a classifier model
-
-Both the input and output folder are assumed to be under the same umbrella directory, called `marketplace`, supplied to
-the application at runtime.
-
-It is recommended to have the `marketplace` directory placed in the project's `data` directory:
-
-```
-.
-├── backend
-│   ├── keychain
-│   ├── notebook
-│   └── src
-├── data
-│   └── marketplace
-│        ├── input
-│        └── output
-└── frontend
-```
-
-The marketplace is the drop point for input images and output results. To run the application, listening in the `input`
-folder for data, provide a path to the classifier model.
+Run by executing the following command:
 
 ```
 python main.py
 ```
 
-### Marketplace
+## Server API
 
-'Marketplace' is the point of interaction with the front end application. Any file placed in the `marketplace/input`
-directory is examined, processed, if it is an image, and always deleted. The results of the classifier is then placed in
-the `marketplace/output` folder as a `json` file with the following schema:
+Currently, there is  a single routing point:
 
-```json
-{
-   "name": "input-name",
-   "predictions": {
-      "class1": "probability of class 1",
-      "class2": "probability of class 2",
-      "classN": "probability of class N"
-   }
-}
-```
+* URL
 
-The output file is named identically to the input file, differing only in file extension, i.e. for an input `foo.png`,
-the output file is `foo.json`.
+  /evaluate
+* Method
+
+  `POST`
+* URL Params
+
+  Required:
+
+  `file = ... todo`
+* Success Response
+
+  Code: 200 Content:
+    ```json
+    {
+      "name": "foo",
+      "predictions": {
+        "Class 1" : "prediction 1",
+        "Class 2" : "prediction 2",
+        "Class N" : "prediction N"
+      }
+    }
+    ```
 
 ## Data
 
@@ -236,7 +215,8 @@ python train.py
 - [x] Local running script
 - [x] Listening for folder changes
 - [x] Find a high performance model
-- [ ] Transform into a web application
+- [x] Transform into a web application
+- [ ] Make server configurable (e.g. port number).  
 - [ ] Record runs in the Classification results table
 - [ ] Find new data sources
 - [ ] Tied with the above, find a finer labeled dataset

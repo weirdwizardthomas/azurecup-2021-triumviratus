@@ -2,7 +2,6 @@ image:
   width: 256
   height: 256
   channels: 1
-
 classification:
   classes:
     - Agaricus
@@ -16,9 +15,8 @@ classification:
     - Suillus
   model: ../model/2021-05-06_193008_561796_46_percent
   upload_folder: ../data/upload
-  timeout: 5
 training:
-  test-data: ../data/image-dataset/mushrooms/test
-  train-data: ../data/image-dataset/mushrooms/train
+  test_data: ../data/image-dataset/mushrooms/test
+  train_data: ../data/image-dataset/mushrooms/train
   keys:
     kaggle: ./keychain/kaggle
