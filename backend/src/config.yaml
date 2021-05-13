@@ -14,8 +14,8 @@ classification:
     - Lactarius
     - Russula
     - Suillus
-  model: ../model/model
-  marketplace: ../data/marketplace
+  model: ../model/2021-05-06_193008_561796_46_percent
+  upload_folder: ../data/upload
   timeout: 5
 training:
   test-data: ../data/image-dataset/mushrooms/test
