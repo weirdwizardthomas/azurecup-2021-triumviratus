@@ -2,6 +2,10 @@ image:
   width: 256
   height: 256
   channels: 1
+server:
+  host: localhost
+  port: 5000
+  debug: True
 classification:
   classes:
     - Agaricus
@@ -13,7 +17,7 @@ classification:
     - Lactarius
     - Russula
     - Suillus
-  model: ../model/2021-05-06_193008_561796_46_percent
+  model: ../model/model
   upload_folder: ../data/upload
 training:
   test_data: ../data/image-dataset/mushrooms/test

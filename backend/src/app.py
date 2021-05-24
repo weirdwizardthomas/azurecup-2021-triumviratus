@@ -1,14 +1,12 @@
 from flask import Flask, request
 
+import file_handler
 from classifier import Classifier
 from config import config
 from image import load_image
-import file_handler
 
-app = Flask(__name__, template_folder='template')
+app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = config.classification.upload_folder
-
-classifier = Classifier.get_instance()
 
 
 @app.route('/evaluate', methods=['GET', 'POST'])
@@ -26,4 +24,5 @@ def evaluate():
 
 
 if __name__ == '__main__':
-    app.run()
+    classifier = Classifier.get_instance()
+    app.run(host=config.server.host, port=config.server.port, debug=config.server.debug)
