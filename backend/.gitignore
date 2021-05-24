@@ -207,9 +207,5 @@ fabric.properties
 # Project specific files/folders
 # -------------------------------------------------
 
-# ignore everything but the folder itself
 keychain/*
-!keychain/.gitkeep
-
 model/*
-!model/.gitkeep
