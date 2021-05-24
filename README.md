@@ -121,32 +121,7 @@ python main.py
 
 ## Server API
 
-Currently, there is  a single routing point:
-
-* URL
-
-  /evaluate
-* Method
-
-  `POST`
-* URL Params
-
-  Required:
-
-  `file = ... todo`
-* Success Response
-
-  Code: 200 Content:
-    ```json
-    {
-      "name": "foo",
-      "predictions": {
-        "Class 1" : "prediction 1",
-        "Class 2" : "prediction 2",
-        "Class N" : "prediction N"
-      }
-    }
-    ```
+Refer to [API documentation](https://github.com/weirdwizardthomas/azurecup-2021-triumviratus/blob/main/apiary.apib).
 
 ## Data
 
