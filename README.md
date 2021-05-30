@@ -174,11 +174,7 @@ In order to train a model, the programme needs data to learn from. There are two
                 └── Suillus
 ```
 
-To commence training, run:
-
-```
-python train.py
-```
+To train a model make use of the `notebook/training.ipynb` Jupyter notebook:
 
 ## Classification results
 
@@ -186,7 +182,6 @@ python train.py
 | ------- | ----------- | ---------------- | ---------- | ------------------- | -------- | ---------- | ---------- |
 
 # To-do list
-
 - [x] Local running script
 - [x] Listening for folder changes
 - [x] Find a high performance model
