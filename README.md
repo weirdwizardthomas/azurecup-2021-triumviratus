@@ -180,14 +180,16 @@ To train a model make use of the `notebook/training.ipynb` Jupyter notebook:
 
 | Dataset | Performance | Number of Epochs | Resolution | Activation function | Momentum | Batch size | Learn rate |
 | ------- | ----------- | ---------------- | ---------- | ------------------- | -------- | ---------- | ---------- |
+| [Common genus's images](https://www.kaggle.com/maysee/mushrooms-classification-common-genuss-images)        | 84.44 %     | 20               | 256 x 256 x 1 | ReLu                | ...      | 128        | ...        |
+
 
 # To-do list
 - [x] Local running script
 - [x] Listening for folder changes
 - [x] Find a high performance model
 - [x] Transform into a web application
-- [ ] Make server configurable (e.g. port number).  
-- [ ] Record runs in the Classification results table
+- [x] Make server configurable (e.g. port number) - by default the flask application supports command line args.  
+- [x] Record runs in the Classification results table
 - [ ] Find new data sources
 - [ ] Tied with the above, find a finer labeled dataset
 - [ ] Develop a phone application
