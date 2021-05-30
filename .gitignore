@@ -1,6 +1,1 @@
-data/*
-!data/.gitkeep
-!data/upload
-
-data/upload/*
-!data/upload/.gitkeep
+data/
