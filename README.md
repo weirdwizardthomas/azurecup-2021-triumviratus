@@ -48,6 +48,7 @@ specific structure requirements, noted below.
 │   │   │       └── CLASS #N
 │   │   └── DATASET #2
 │   └── upload
+├── apiary.apib
 ├── LICENSE
 └── README.md
 ```
