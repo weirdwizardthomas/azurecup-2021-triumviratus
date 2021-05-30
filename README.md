@@ -15,14 +15,18 @@ specific structure requirements, noted below.
 │   │   └── kaggle
 │   ├── notebook
 │   │   ├── dataset downloader.ipynb
+│   │   └── training.ipynb
 │   ├── requirements.txt
 │   └── src
 │       ├── __init__.py
+│       ├── app.py
 │       ├── arguments.py
 │       ├── classifier.py
-│       ├── dataset.py
+│       ├── config.py
+│       ├── config.yaml
 │       ├── file_handler.py
 │       ├── image.py
+│       ├── setup.py
 │       └── template.py
 ├── frontend
 │   ├── client.js
@@ -51,7 +55,7 @@ specific structure requirements, noted below.
 # Backend [Classifier]
 
 The backend project consists of a classifier running as a webservice. The classifier model has to be provided, but there
-is also a provided by the `train.py` script. Although the backend was developed with classification of mushrooms in
+is also a training script provided:`notebook/training.ipynb` notebook. Although the backend was developed with classification of mushrooms in
 mind, it is generic enough to support and run any [Keras](https://keras.io/) out of the box.
 
 ## Requirements
@@ -88,6 +92,10 @@ image:
   width: 256
   height: 256
   channels: 1
+server:
+  host: localhost
+  port: 5000
+  debug: True
 classification:
   classes:
     - Agaricus
@@ -99,7 +107,7 @@ classification:
     - Lactarius
     - Russula
     - Suillus
-  model: ../model/2021-05-06_193008_561796_46_percent
+  model: ../model/model
   upload_folder: ../data/upload
 training:
   test_data: ../data/image-dataset/mushrooms/test
