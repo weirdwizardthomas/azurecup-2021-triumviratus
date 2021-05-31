@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 // import fileDownload from 'js-file-download'
 import { Button, Image } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { json } from 'body-parser';
 
 //import { Link } from 'react-router-dom'
 
@@ -13,31 +14,39 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const ShroomFinder = () => {
 
+    var imgsrc = ""
+
     const [inputFile, setInputFile] = useState({
         file: "",
     })
 
+    const [tablerows, setTableRows] = useState([])
+
     const handleSubmit = () => {
         const formData = new FormData();
 
-        formData.append('File', inputFile);
+        formData.append('File', inputFile.file);
 
-        console.log(inputFile);
+        console.log(inputFile.file);
 
         fetch(
             'http://localhost:3001/evaluate',
             {
                 method: 'POST',
-                body:  formData,
-                mode: 'no-cors',
+                body: formData,// JSON.stringify(jobject),
+                //mode: 'cors',
                 // headers: {
-                //      'Content-Type': 'application/json'
-                //     //'Content-Type': 'multipart/form-data'
+                //     //'Accept': 'application/json',
+                //     //'Content-Type': 'application/json'
+                //     'Content-Type': 'multipart/form-data'
                 //   },
             }
         ).then((response) => response.json())
             .then((result) => {
-                console.log('Success:', result);
+                console.log('Success:', result.name);
+                setTableRows(result.predictions)
+                document.getElementById("rows").innerHTML = JSON.stringify(result.predictions)
+                //getRowsData()
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -47,6 +56,9 @@ const ShroomFinder = () => {
     const onChange = e => {
         e.preventDefault()
         // console.log(e.target.files[0])
+        var image = document.getElementById('pic');
+        image.src = URL.createObjectURL(e.target.files[0]);
+
         setInputFile({
             ...inputFile,
             [e.target.name]: e.target.files[0],
@@ -55,11 +67,12 @@ const ShroomFinder = () => {
     }
 
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex flex-column align-items-center">
             <h1>ShroomFinder</h1>
-            <Image src={inputFile.file} alt="pic" style={{ height: "45%", width: "45%" }} thumbnail />
+            <Image src={imgsrc} alt="pic" style={{ height: "45%", width: "45%" }} id="pic" thumbnail />
             <input type="file" onChange={onChange} accept="image/png, image/jpeg" name="file" />
-            <Button variant="outline-dark"  onClick={handleSubmit}>Evaluate</Button>
+            <Button variant="outline-dark" onClick={handleSubmit}>Evaluate</Button>
+            <div id="rows"></div>
         </div>
     );
 
