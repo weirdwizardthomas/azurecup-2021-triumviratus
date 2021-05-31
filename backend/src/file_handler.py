@@ -1,8 +1,9 @@
 import os
 
 from werkzeug.utils import secure_filename
-
 import template
+
+from config import config
 
 
 def read(file):
@@ -11,7 +12,7 @@ def read(file):
     :param file: POST request data.
     :return: str | Name of the file
     """
-    filename = file.filename
+    filename = os.path.join(config.classification.upload_folder, file.filename)
     file.save(secure_filename(filename))
     print(template.RECEIVED_FILE.format(filename))
     return filename
