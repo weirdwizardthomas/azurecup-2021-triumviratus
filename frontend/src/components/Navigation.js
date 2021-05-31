@@ -18,10 +18,10 @@ const Navigation = () => {
     return (
         <div className="main">
             <Nav className="justify-content-center">
-                <NavLink to="/"><Button variant="outline-dark" align="center">Home</Button></NavLink>
-                <NavLink to="/About"><Button variant="outline-dark" align="center">About</Button></NavLink>
-                <NavLink to="/ShroomFinder"><Button variant="outline-dark" align="center">Shroom finder</Button></NavLink>
-                <NavLink to="/Other"><Button variant="outline-dark" align="center">Other</Button></NavLink>
+                <NavLink to="/"><Button variant="outline-light" size="lg" align="center">Home</Button></NavLink>
+                <NavLink to="/About"><Button variant="outline-light" size="lg" align="center">About</Button></NavLink>
+                <NavLink to="/ShroomFinder"><Button variant="outline-light" size="lg" align="center">Shroom finder</Button></NavLink>
+                <NavLink to="/Other"><Button variant="outline-light" size="lg" align="center">Other</Button></NavLink>
             </Nav>
         </div>
     );

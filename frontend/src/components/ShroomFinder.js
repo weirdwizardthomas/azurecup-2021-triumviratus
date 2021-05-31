@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 // import fileDownload from 'js-file-download'
 import { Button, Image } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { json } from 'body-parser';
 
 //import { Link } from 'react-router-dom'
 
@@ -13,7 +12,6 @@ import { json } from 'body-parser';
 
 
 const ShroomFinder = () => {
-
     var imgsrc = ""
 
     const [inputFile, setInputFile] = useState({
@@ -67,12 +65,12 @@ const ShroomFinder = () => {
     }
 
     return (
-        <div className="d-flex flex-column align-items-center">
-            <h1>ShroomFinder</h1>
+        <div className="d-flex flex-column align-items-center block">
+            <h1 style={{color: "white"}}>ShroomFinder</h1>
             <Image src={imgsrc} alt="pic" style={{ height: "45%", width: "45%" }} id="pic" thumbnail />
             <input type="file" onChange={onChange} accept="image/png, image/jpeg" name="file" />
-            <Button variant="outline-dark" onClick={handleSubmit}>Evaluate</Button>
-            <div id="rows"></div>
+            <Button variant="outline-light" size="lg" onClick={handleSubmit}>Evaluate</Button>
+            <div id="rows" style={{color: "white"}}></div>
         </div>
     );
 

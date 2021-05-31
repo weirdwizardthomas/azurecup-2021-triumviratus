@@ -14,6 +14,7 @@ import About from './About.js';
 import ShroomFinder from './ShroomFinder.js';
 import Other from './Other.js';
 
+
 const App = () => {
 
     return (
@@ -21,7 +22,8 @@ const App = () => {
             <Navigation />
             <Switch>
                 <Route path="/" component={App} exact>
-                    <div className="app">
+                    <div className="d-flex flex-column align-items-center">
+                        <h1 style={{color: "white"}}>Home</h1>
                     </div>
                 </Route>
                 <Route path="/About" component={About}></Route>
