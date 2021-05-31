@@ -1,5 +1,6 @@
 import React from 'react'
-
+import imgsrc from '../pics/sadshroom.png'
+import { Image } from 'react-bootstrap'
 
 import {
     Switch,
@@ -23,7 +24,9 @@ const App = () => {
             <Switch>
                 <Route path="/" component={App} exact>
                     <div className="d-flex flex-column align-items-center">
-                        <h1 style={{color: "white"}}>Home</h1>
+                        <h1 style={{ color: "white" }}>Home</h1>
+                        <p style={{ color: "white", fontSize: "large" }}> Omlouváme se, musíme to opravit</p>
+                        <Image src={imgsrc} alt="pic" style={{ height: "45%", width: "45%" }} id="pic" />
                     </div>
                 </Route>
                 <Route path="/About" component={About}></Route>
