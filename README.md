@@ -187,9 +187,9 @@ To train a model make use of the `notebook/training.ipynb` Jupyter notebook:
 
 ## Classification results
 
-| Dataset | Performance | Number of Epochs | Resolution | Activation function | Momentum | Batch size | Learn rate |
-| ------- | ----------- | ---------------- | ---------- | ------------------- | -------- | ---------- | ---------- |
-| [Common genus's images](https://www.kaggle.com/maysee/mushrooms-classification-common-genuss-images)        | 84.44 %     | 20               | 256 x 256 x 1 | ReLu                | ...      | 128        | ...        |
+| Dataset | Trained model | Performance | Number of Epochs | Resolution | Activation function | Momentum | Batch size | Learn rate |
+| ------- | ------------- | ----------- | ---------------- | ---------- | ------------------- | -------- | ---------- | ---------- |
+| [Common genus's images](https://www.kaggle.com/maysee/mushrooms-classification-common-genuss-images) | [Google Drive](https://drive.google.com/file/d/14QBhzjtZ7A3smRxOksao4hOAbziE1Fub/view?usp=sharing)       | 84.44 %     | 20               | 256 x 256 x 1 | ReLu                | ...      | 128        | ...        |
 
 
 # To-do list
