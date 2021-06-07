@@ -5,3 +5,5 @@ numpy~=1.19.5
 tensorflow~=2.4.1
 Werkzeug~=2.0.0
 dynamic-yaml~=1.2.3
+scikit-learn~=0.24
+kaggle~=1.5.12
