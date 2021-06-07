@@ -12,7 +12,7 @@ def read(file):
     :param file: POST request data.
     :return: str | Name of the file
     """
-    filename = os.path.join(config.classification.upload_folder, file.filename)
+    filename = file.filename
     file.save(secure_filename(filename))
     print(template.RECEIVED_FILE.format(filename))
     return filename
