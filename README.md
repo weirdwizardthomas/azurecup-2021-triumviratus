@@ -183,7 +183,15 @@ In order to train a model, the programme needs data to learn from. There are two
                 └── Suillus
 ```
 
-To train a model make use of the `notebook/training.ipynb` Jupyter notebook:
+To train a model make use of the `notebook/training.ipynb` Jupyter notebook.
+
+<details>
+    <summary>
+        Show network architecture.
+    </summary>
+
+![Network architecture](assets/network-architecture.png)
+</details>
 
 ## Classification results
 
